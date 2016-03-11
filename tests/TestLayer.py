@@ -4,10 +4,10 @@ import layer.Layer as Layer
 class TestLayer(unittest.TestCase):
     def test_simple_network(self):
         network = Layer.Layer(2, 2);
-        network.set_weight(0, 0, 1)
-        network.set_weight(0, 1, 2)
-        network.set_weight(1, 1, 3)
-        network.set_weight(1, 0, 4)
+        network.set_weight((0, 0), 1)
+        network.set_weight((0, 1), 2)
+        network.set_weight((1, 1), 3)
+        network.set_weight((1, 0), 4)
 
         #test simple network with no biases
         sums = network.get_outsums([0, 1])

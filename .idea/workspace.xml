@@ -35,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/layer/Layer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+              <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -46,8 +46,8 @@
       <file leaf-file-name="TestLayer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/TestLayer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53741497">
-              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.1390593">
+              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -69,16 +69,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/layer/__init__.py" />
-        <option value="$PROJECT_DIR$/layer/Layer.py" />
         <option value="$PROJECT_DIR$/tests/TestLayer.py" />
+        <option value="$PROJECT_DIR$/layer/Layer.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="576" />
-    <option name="y" value="59" />
-    <option name="width" value="800" />
-    <option name="height" value="828" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -315,12 +315,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.10 at 14h 07m 21s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.10 at 14h 09m 54s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.10 at 14h 25m 59s.xml">
       <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
     </history-entry>
@@ -345,17 +339,23 @@
     <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.11 at 08h 17m 38s.xml">
       <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.11 at 09h 25m 47s.xml">
+      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.11 at 09h 26m 30s.xml">
+      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="576" y="59" width="800" height="828" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5063776" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.248125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34679666" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32506528" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -414,7 +414,7 @@
     <entry file="file://$PROJECT_DIR$/layer/Layer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
@@ -423,8 +423,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/TestLayer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53741497">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.1390593">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

@@ -22,14 +22,14 @@ class Layer:
         in_matrix = numpy.matrix([1] + input)
         return numpy.squeeze(numpy.asarray(in_matrix * self.weights))
 
-    def get_weight(self, in_neuron, out_neuron):
+    def get_weight(self, (in_neuron, out_neuron)):
         # Add one to in_neuron because idx zero is the bias for the corresponding out neuron
         return self.weights[in_neuron + 1, out_neuron]
 
     def get_bias(self, out_neuron):
         return self.weights[0, out_neuron]
 
-    def set_weight(self, in_neuron, out_neuron, weight):
+    def set_weight(self, (in_neuron, out_neuron), weight):
         self.weights[in_neuron + 1, out_neuron] = weight
 
     def set_bias(self, out_neuron, bias):
