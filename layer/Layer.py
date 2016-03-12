@@ -1,4 +1,3 @@
-from __future__ import print_function
 import numpy
 
 
@@ -20,7 +19,7 @@ class Layer:
 
     def get_outsums(self, input):
         in_matrix = numpy.matrix([1] + input)
-        return numpy.squeeze(numpy.asarray(in_matrix * self.weights))
+        return numpy.squeeze(numpy.asarray(in_matrix * self.weights)).tolist()
 
     def get_weight(self, (in_neuron, out_neuron)):
         # Add one to in_neuron because idx zero is the bias for the corresponding out neuron

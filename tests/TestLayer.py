@@ -1,5 +1,6 @@
 import unittest
 import layer.Layer as Layer
+import layer.Network as Network
 
 class TestLayer(unittest.TestCase):
     def test_simple_network(self):
@@ -30,6 +31,7 @@ class TestLayer(unittest.TestCase):
         sums = network.get_output([1, 1])
         print(sums)
         self.assertTrue((sums>[.99, .98]).all())
+
 
 if __name__ == '__main__':
     unittest.main()

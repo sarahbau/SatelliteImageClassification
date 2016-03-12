@@ -35,19 +35,39 @@
         <entry file="file://$PROJECT_DIR$/layer/Layer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Network.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layer/Network.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestLayer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/TestLayer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
               <folding>
-                <element signature="e#0#37#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestLayer.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/TestLayer.py">
+      <file leaf-file-name="TestNetwork.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/TestNetwork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1390593">
-              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.6257669">
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -71,6 +91,8 @@
         <option value="$PROJECT_DIR$/layer/__init__.py" />
         <option value="$PROJECT_DIR$/tests/TestLayer.py" />
         <option value="$PROJECT_DIR$/layer/Layer.py" />
+        <option value="$PROJECT_DIR$/layer/Network.py" />
+        <option value="$PROJECT_DIR$/tests/TestNetwork.py" />
       </list>
     </option>
   </component>
@@ -147,7 +169,7 @@
       </pane>
     </panes>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest TestLayer.test_simple_network">
+  <component name="RunManager" selected="Python tests.Unittests in TestNetwork">
     <configuration default="false" name="Unittest TestLayer.test_simple_network" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -163,6 +185,28 @@
       <option name="METHOD_NAME" value="test_simple_network" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in TestNetwork" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="NeuralNet" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/TestNetwork.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -292,12 +336,14 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestLayer.test_simple_network" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestNetwork" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestLayer.test_simple_network" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestNetwork" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestLayer.test_simple_network" />
       </list>
     </recent_temporary>
   </component>
@@ -315,35 +361,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.10 at 14h 25m 59s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 00h 59m 21s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.10 at 14h 26m 40s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 00h 59m 32s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.10 at 14h 27m 23s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 00h 59m 51s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.10 at 14h 27m 38s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 01h 00m 04s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.10 at 14h 28m 03s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 01h 00m 11s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.11 at 08h 17m 15s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 01h 00m 32s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.11 at 08h 17m 24s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 01h 00m 48s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.11 at 08h 17m 38s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 01h 08m 07s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.11 at 09h 25m 47s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 01h 08m 15s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestLayer_test_simple_network - 2016.03.11 at 09h 26m 30s.xml">
-      <configuration name="Unittest TestLayer.test_simple_network" configurationId="tests" />
+    <history-entry file="Unittests_in_TestNetwork - 2016.03.12 at 01h 08m 23s.xml">
+      <configuration name="Unittests in TestNetwork" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -397,9 +443,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -411,20 +455,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layer/Layer.py">
+    <entry file="file://$PROJECT_DIR$/tests/TestLayer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
+          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/TestLayer.py">
+    <entry file="file://$PROJECT_DIR$/layer/Layer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1390593">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layer/Network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6257669">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
