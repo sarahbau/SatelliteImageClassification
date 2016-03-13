@@ -2,6 +2,7 @@ import unittest
 import layer.Layer as Layer
 import layer.Network as Network
 
+
 class TestNetwork(unittest.TestCase):
     def test_multi_layer_network(self):
         l1 = Layer.Layer(2, 2)
@@ -14,8 +15,8 @@ class TestNetwork(unittest.TestCase):
         l2.set_weight((1, 0), 2)
 
         network = Network.Network()
-        network.addLayer(l1)
-        network.addLayer(l2)
+        network.add_layer(l1)
+        network.add_layer(l2)
 
         out = network.get_output([0, 0])
         print (out)

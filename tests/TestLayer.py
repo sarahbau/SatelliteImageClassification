@@ -1,6 +1,6 @@
 import unittest
 import layer.Layer as Layer
-import layer.Network as Network
+
 
 class TestLayer(unittest.TestCase):
     def test_simple_network(self):
