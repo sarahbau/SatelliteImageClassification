@@ -5,10 +5,6 @@ class Network:
 
     def __init__(self):
         self.layers = []
-        self.lastInputs = []
-        self.lastInputsDer = []
-        self.lastOutput = []
-        self.lastOutputDer = []
 
     def add_layer(self, layer):
         if len(self.layers) > 0:
@@ -18,37 +14,25 @@ class Network:
         self.layers.append(layer)
 
     def get_output(self, ins):
-        self.lastInputs = []
-        self.lastInputsDer = []
-        self.lastOutput = []
-        self.lastOutputDer = []
 
         for layer in self.layers:
-            self.lastInputs.append(ins)
             ins = layer.get_output(ins)
 
-        self.lastOutput = ins
-
-        self.calculate_derivatives()
         return ins
 
-    # def train_backpropagation(self, learning_rate):
+    def back_propagate(self, input, expected_out, learning_rate):
 
+        actual_out = self.get_output(input)
 
+        # calculate sum squared error (diff used as derivative for back-prop)
+        diff = numpy.subtract(actual_out, expected_out)
+        diffsqr = numpy.multiply(diff, diff)
+        error = .5 * numpy.sum(diffsqr)
 
-    def calculate_derivatives(self):
-        self.lastOutputDer = Network.calculate_sig_der_array(self.lastOutput)
-        self.lastInputsDer = []
-        for idx, ins in enumerate(self.lastInputs):
-            self.lastInputsDer.append(Network.calculate_sig_der_array(ins))
+        cur_der = diff.tolist()
 
-    @staticmethod
-    def calculate_sig_der_array(array):
-        der = [0] * len(array)
-        for idx, val in enumerate(array):
-            der[idx] = val * (1 - val)
+        for layer in reversed(self.layers):
+            cur_der = layer.get_reverse_der_sums(cur_der)
+            layer.adjust_weights(learning_rate)
 
-        return der
-
-
-
+        return error
