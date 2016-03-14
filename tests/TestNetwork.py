@@ -51,8 +51,8 @@ class TestNetwork(unittest.TestCase):
     def test_backpropagation_two_layer(self):
         l1 = Layer.Layer(2, 5)
         l2 = Layer.Layer(5, 1)
-        l1.randomize(-.1, .1)
-        l2.randomize(-.1, .1)
+        l1.randomize(-4, 4)
+        l2.randomize(-4, 4)
 
         #xor
         dataset = [
@@ -67,7 +67,7 @@ class TestNetwork(unittest.TestCase):
 
         for i in range(0, 10000):
             row = random.choice(dataset)
-            network.back_propagate(row[0], row[1], 1)
+            network.back_propagate(row[0], row[1], .5)
 
         self.assertTrue(network.get_output([0, 0])[0] < .1)
         self.assertTrue(network.get_output([1, 0])[0] > .9)
