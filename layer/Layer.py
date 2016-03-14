@@ -109,6 +109,7 @@ class Layer:
         """
         der = [0] * len(array)
         for idx, val in enumerate(array):
+            # derivative of logistic function
             der[idx] = val * (1 - val)
 
         return der
