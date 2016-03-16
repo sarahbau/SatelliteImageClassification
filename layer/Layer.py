@@ -25,8 +25,8 @@ class Layer:
         self.backprop_der = [0] * num_out
 
     def randomize(self, low, high):
-        for i in range(0, self.num_in + 1):
-            for j in range(0, self.num_out):
+        for i in xrange(0, self.num_in + 1):
+            for j in xrange(0, self.num_out):
                 self.weights[i, j] = random.uniform(low, high)
 
     def get_output(self, input):
@@ -58,8 +58,8 @@ class Layer:
         :param learning_rate: rate at which to adjust the weights
         :return:
         """
-        for i in range(0, self.num_in + 1):
-            for j in range(0, self.num_out):
+        for i in xrange(0, self.num_in + 1):
+            for j in xrange(0, self.num_out):
                 self.weights[i, j] -= learning_rate * self.last_input[i] * self.backprop_der[j]
 
     def get_outsums(self, input):
@@ -96,7 +96,7 @@ class Layer:
         :param array:
         :return:
         """
-        for n in range(0, len(array)):
+        for n in xrange(0, len(array)):
                 array[n] = Layer.logistic(array[n])
         return array
 

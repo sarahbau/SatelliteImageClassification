@@ -23,7 +23,6 @@ class Network:
     def back_propagate(self, input, expected_out, learning_rate):
 
         actual_out = self.get_output(input)
-
         # calculate sum squared error (diff used as derivative for back-prop)
         diff = numpy.subtract(actual_out, expected_out)
         diffsqr = numpy.multiply(diff, diff)
