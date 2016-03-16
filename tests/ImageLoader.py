@@ -3,6 +3,9 @@ import layer.Network as Network
 import layer.Layer as Layer
 import random
 import numpy
+import pickle
+
+save_file_name = "nnet200_40_20000"
 
 print ("Loading original image")
 original_image = Image.open("../images/image.png")
@@ -41,7 +44,7 @@ w2 = real_width/2
 
 data = [0] * num_neurons
 
-iterations = 100000
+iterations = 20000
 
 #total error every 100 iterations
 total_error = 0
@@ -154,3 +157,5 @@ for i in xrange(0, iterations):
 
                 sample_total_error += error
                 success = True
+
+pickle.dump( network, open( save_file_name, "wb"))
