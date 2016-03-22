@@ -1,4 +1,4 @@
-import Image
+from PIL import Image
 import layer.Network as Network
 import layer.Layer as Layer
 import random
