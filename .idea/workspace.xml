@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e19760eb-d19d-4b45-acdf-7df43c01419f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/ImageLoader.py" afterPath="$PROJECT_DIR$/tests/ImageLoader.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/tests/ImageLoader.py" afterPath="$PROJECT_DIR$/tests/NetworkTrainer.py" />
     </list>
     <ignored path="NeuralNet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,8 +45,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageLoader.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/ImageLoader.py">
+      <file leaf-file-name="NetworkTrainer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/NetworkTrainer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
@@ -337,7 +337,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="NeuralNet" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/ImageLoader.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Nathan\PycharmProjects\NeuralNet\tests\NetworkTrainer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -645,7 +645,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/ImageLoader.py">
+    <entry file="file://$PROJECT_DIR$/tests/NetworkTrainer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="41" />
@@ -860,7 +860,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/ImageLoader.py">
+    <entry file="file://$PROJECT_DIR$/tests/NetworkTrainer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
