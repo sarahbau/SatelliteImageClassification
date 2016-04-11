@@ -1,17 +1,20 @@
-import cv2
+from PIL import Image
+from pylab import *
+import sift.vlfeat as vlfeat
 
 
 if __name__ == '__main__':
-    print("CV2 version: "+cv2.__version__+'\n')
-    img = cv2.imread('../images/out.png')
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    print("This is just a test!\n")
 
-    # sift = cv2.SI
-    # kp = sift.detect(gray, None)
+    imgName = '../images/raleigh/image.png'
 
-    # img = cv2.drawKeypoints(gray, kp)
+    # this image takes forever to compute - try way smaller please
 
-    cv2.imshow('gray_Image', img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    vlfeat.process_image(imgName, 'tmp.sift')
+    l, d = vlfeat.read_features_from_file('tmp.sift')
 
+    im = array(Image.open(imgName))
+    figure()
+    vlfeat.plot_features(im, l, True)
+
+    show()
