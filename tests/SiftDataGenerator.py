@@ -2,6 +2,7 @@ from PIL import Image
 from pylab import *
 import numpy
 import os
+import time
 import pickle
 import sift.vlfeat as vlfeat
 from sklearn.decomposition import PCA
@@ -22,11 +23,12 @@ def split_list(a_list):
 
 if __name__ == '__main__':
 
-    nature_path = '../images/Classified/6/Nature/'
-    commercial_path = '../images/Classified/6/Commercial/'
-    residential_path = '../images/Classified/6/Residential/'
+    image_num = 2
+    nature_path = '../images/Classified/' + str(image_num) + '/Nature/'
+    commercial_path = '../images/Classified/' + str(image_num) + '/Commercial/'
+    residential_path = '../images/Classified/' + str(image_num) + '/Residential/'
     n_components = 10
-    save_name = "../data/image1data"
+    save_name = "../data/image" + str(image_num) + "data"
 
 
     save_name = save_name + '_' + str(n_components) + 'c' + '.dat'
@@ -48,6 +50,11 @@ if __name__ == '__main__':
     residential_test, residential_train = split_list(residential)
 
     data = dict()
+    data['all'] = {
+        'nature': nature,
+        'commercial': commercial,
+        'residential': residential
+    }
     data['test'] = {
         'nature': nature_test,
         'commercial': commercial_test,
