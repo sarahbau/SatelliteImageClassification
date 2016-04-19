@@ -1,5 +1,6 @@
 from PIL import Image
 from pylab import *
+import numpy
 import sift.vlfeat as vlfeat
 from sklearn.decomposition import PCA
 
@@ -8,6 +9,7 @@ if __name__ == '__main__':
 
     imgName1 = '../images/Classified/Nature/slice_19-26.png'
     imgName2 = '../images/Classified/Nature/slice_19-27.png'
+    #imgName2 = '../images/Classified/Commercial/slice_4-1.png'
 
     # this image takes forever to compute - try way smaller please
 
@@ -22,10 +24,10 @@ if __name__ == '__main__':
     # vlfeat.plot_features(im, l, True)
     # show()
 
-    pca = PCA(n_components=3)
-    pca.fit(d)
-    print(pca.explained_variance_ratio_)
+    pca1 = PCA(n_components=10)
+    pca1.fit(d)
+    print(pca1.explained_variance_ratio_)
 
-    pca = PCA(n_components=3)
-    pca.fit(d2)
-    print(pca.explained_variance_ratio_)
+    pca2 = PCA(n_components=10)
+    pca2.fit(d2)
+    print(numpy.linalg.norm(pca2.explained_variance_ratio_-pca1.explained_variance_ratio_))
