@@ -4,6 +4,7 @@ import os
 from random import shuffle
 import layer.Network as Network
 import layer.Layer as Layer
+import pickle
 import numpy
 
 def exctractImgNames():
@@ -47,11 +48,11 @@ def exctractImgNames():
     return imgs_file_names
 
 def createNetwork(in_neurons, hidden_layer_count, n_outs):
-    network = Network.Network()
     l1 = Layer.Layer(in_neurons, hidden_layer_count)
     l2 = Layer.Layer(hidden_layer_count, n_outs)
     l1.randomize(-1, 1)
     l2.randomize(-1, 1)
+    network = Network.Network()
     network.add_layer(l1)
     network.add_layer(l2)
     return network
@@ -59,30 +60,78 @@ def createNetwork(in_neurons, hidden_layer_count, n_outs):
 def trainNet(file_names,dict,network,rate,n_comp):
     errors = []
     for i in file_names:
-        sift.process_image(i, 'tmp.sift')
-        l, d = sift.read_features_from_file('tmp.sift')
-        pca = PCA(n_components=n_comp)
-        pca.fit(d)
-        inAr = pca.explained_variance_ratio_
-        outAr = [0] * 4
-        outAr[dict[i]] = 1
-        print inAr
-        print outAr
-        errors.append(network.back_propagate(inAr,outAr,.1))
-
+        os.remove('tmp.sift')
+        os.remove('tmp.pgm')
+        try:
+            sift.process_image(i, 'tmp.sift')
+            l, d = sift.read_features_from_file('tmp.sift')
+            pca = PCA(n_components=n_comp)
+            pca.fit(d)
+            inAr = pca.explained_variance_ratio_.tolist()
+            outAr = [0] * 4
+            outAr[dict[i]] = 1
+            errors.append(network.back_propagate(inAr,outAr,rate))
+        except IndexError:
+            print("File "+i+" is broken!\n")
+            continue
+        except ValueError:
+            print("Woops value error!\n")
+            continue
     return errors
+
+def toidx(ar):
+    out = 0;
+    max = -100.0;
+    for i in range(len(ar)):
+        if ar[i] > max:
+            out = i
+            max = ar[i]
+    return out
+
+def test(file_names,dict,network):
+    errors = []
+    for i in file_names:
+        try:
+            sift.process_image(i, 'tmp.sift')
+            l, d = sift.read_features_from_file('tmp.sift')
+            pca = PCA(n_components=5)
+            pca.fit(d)
+            inAr = pca.explained_variance_ratio_.tolist()
+            outAr = [0] * 4
+            outAr[dict[i]] = 1
+            actual = network.get_output(inAr)
+            print toidx(actual)
+            if dict[i] == toidx(actual):
+                errors.append(1)
+            else:
+                errors.append(0)
+        except IndexError:
+            print("File " + i + " is broken!\n")
+            continue
+        except ValueError:
+            print("Woops value error!\n")
+            continue
+    return errors
+
 
 if __name__ == '__main__':
     print("Image -> Sift -> PCA -> NN -> Prediction!\n")
 
-    n_comp = 5
-    learning_rate = 0.1
-    network = createNetwork(5, 5, 4)
+    #n_comp = 20
+    #learning_rate = 0.2
+    #network = createNetwork(20, 100, 4)
 
     namesDict = exctractImgNames()
     names = namesDict.keys()
     shuffle(names)
 
-    errors = trainNet(names,namesDict,network,learning_rate,n_comp)
-    print errors
+    #pickle.dump(network, open("sift_20_100_4", "wb"))
+    #trainNet(names,namesDict,network,learning_rate,n_comp)
+
+    network = pickle.load(open("sift_5_5_4","r"))
+    errors = test(names,namesDict,network)
+
+    tot = sum(errors) / len(errors)
+
+    print tot
 
