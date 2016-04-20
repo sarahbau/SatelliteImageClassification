@@ -10,7 +10,7 @@ from sklearn.decomposition import PCA
 def sift_image(path, n_components):
     if not path.endswith(".png"): return
     vlfeat.process_image(path, 'tmp.sift1')
-    print "File is {} bytes".format(os.stat('tmp.sift1').st_size)
+    #print "File is {} bytes".format(os.stat('tmp.sift1').st_size)
     if(os.stat('tmp.sift1').st_size < 378):
         print "Bad tmp.sift1 for", path
         return
@@ -30,8 +30,8 @@ if __name__ == '__main__':
 
     #image_num = 2
     #n_components = 10
-    for image_num in xrange(1, 3):
-        for n_components in xrange(11, 20):
+    for image_num in xrange(2, 7):
+        for n_components in xrange(2, 21):
             nature_path = '../images/Classified/' + str(image_num) + '/Nature/'
             commercial_path = '../images/Classified/' + str(image_num) + '/Commercial/'
             residential_path = '../images/Classified/' + str(image_num) + '/Residential/'
