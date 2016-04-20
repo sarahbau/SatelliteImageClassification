@@ -9,6 +9,8 @@ from Queue import PriorityQueue
 import pickle
 import pprint
 import csv
+import layer.Network as Network
+import layer.Layer as Layer
 
 
 @total_ordering
@@ -109,63 +111,130 @@ if __name__ == '__main__':
         data4 = pickle.load(open('../data/image4data_' + str(sift_comp) + 'c.dat', "rb"))['all']
         dataM = merge_dicts(data1, data2, data4)
 
-        nature_train = data6['nature']
-        commercial_train = data6['commercial']
-        residential_train = data6['residential']
-        nature_test = dataM['nature']
-        commercial_test = dataM['commercial']
-        residential_test = dataM['residential']
+        hidden_layer_count = 15
+        l1 = Layer.Layer(10, hidden_layer_count)
+        l2 = Layer.Layer(hidden_layer_count, 3)
 
-        for k in xrange(1,10):
-            print "Starting k =", k
-            accuracy[sift_comp][k] = {}
-            nature_matches = {'nature': 0, 'commercial': 0, 'residential': 0}
-            count = 0
-            for n in nature_test:
-                # print get_class(n, k, nature_train, commercial_train)
-                match = get_class(n, k, nature_train, commercial_train, residential_train)
-                if match is None:
-                    continue
-                nature_matches[match] += 1
-                count += 1
-            acc = nature_matches['nature']/float(count)
-            accuracy[sift_comp][k]['nature'] = acc
-            accuracy[sift_comp][k]['nat_count'] = count
+        print ("Initializing weights for layer 1")
+        l1.randomize(-2, 2)
+        print ("Initializing weights for layer 2")
+        l2.randomize(-2, 2)
 
-            print "Nature: {}\tAccuracy: {}".format(nature_matches, acc)
+        print ("Starting Network Training")
+        network = Network.Network()
 
-            commercial_matches = {'nature': 0, 'commercial': 0, 'residential': 0}
-            count = 0
-            for n in commercial_test:
-                # print get_class(n, k, nature_train, commercial_train)
-                match = get_class(n, k, nature_train, commercial_train, residential_train)
-                if match is None:
-                    continue
-                commercial_matches[match] += 1
-                count += 1
-            acc = commercial_matches['commercial']/float(count)
-            accuracy[sift_comp][k]['commercial'] = acc
-            accuracy[sift_comp][k]['com_count'] = count
+        network.add_layer(l1)
+        network.add_layer(l2)
 
-            print "Commercial: {}\tAccuracy: {}".format(commercial_matches, acc)
+        iterations = 20000
+        learning_rate = 1
 
-            residential_matches = {'nature': 0, 'commercial': 0, 'residential': 0}
-            count = 0
-            for n in residential_test:
-                # print get_class(n, k, nature_train, commercial_train)
-                match = get_class(n, k, nature_train, commercial_train, residential_train)
-                if match is None:
-                    continue
-                residential_matches[match] += 1
-                count += 1
-            acc = residential_matches['residential']/float(count)
-            accuracy[sift_comp][k]['residential'] = acc
-            accuracy[sift_comp][k]['res_count'] = count
+        for i in xrange(iterations):
+            exp = None
+            class_name = None
+            if i%3 == 0:
+                exp = [1, 0, 0]
+                class_name = 'nature'
+            if i%3 == 1:
+                exp = [0, 1, 0]
+                class_name = 'commercial'
+            if i%3 == 2:
+                exp = [0, 0, 1]
+                class_name = 'residential'
 
-            print "residential: {}\tAccuracy: {}".format(residential_matches, acc)
+            val = random.choice(dataM[class_name]).tolist()
+            network.back_propagate(val, exp, learning_rate)
+
+        nature_test = data6['nature']
+        commercial_test = data6['commercial']
+        residential_test = data6['residential']
+
+        print "Starting k =", 0
+        accuracy[sift_comp][0] = {}
+        nature_matches = {'nature': 0, 'commercial': 0, 'residential': 0}
+        count = 0
+        for n in nature_test:
+            # print get_class(n, k, nature_train, commercial_train)
+            out = network.get_output(n)
+            max = -1
+            maxi = 0
+            for j in xrange(3):
+                if max < out[j]:
+                    max = out[j]
+                    maxi = j
+            if (maxi == 0):
+                match = 'nature'
+            if (maxi == 1):
+                match = 'commercial'
+            if (maxi == 2):
+                match = 'residential'
+
+            if match is None:
+                continue
+            nature_matches[match] += 1
+            count += 1
+        acc = nature_matches['nature']/float(count)
+        accuracy[sift_comp][k]['nature'] = acc
+        accuracy[sift_comp][k]['nat_count'] = count
+
+        print "Nature: {}\tAccuracy: {}".format(nature_matches, acc)
+
+        commercial_matches = {'nature': 0, 'commercial': 0, 'residential': 0}
+        count = 0
+        for n in commercial_test:
+            # print get_class(n, k, nature_train, commercial_train)
+            out = network.get_output(n)
+            max = -1
+            maxi = 0
+            for j in xrange(3):
+                if max < out[j]:
+                    max = out[j]
+                    maxi = j
+            if (maxi == 0):
+                match = 'nature'
+            if (maxi == 1):
+                match = 'commercial'
+            if (maxi == 2):
+                match = 'residential'
+            if match is None:
+                continue
+            commercial_matches[match] += 1
+            count += 1
+        acc = commercial_matches['commercial']/float(count)
+        accuracy[sift_comp][k]['commercial'] = acc
+        accuracy[sift_comp][k]['com_count'] = count
+
+        print "Commercial: {}\tAccuracy: {}".format(commercial_matches, acc)
+
+        residential_matches = {'nature': 0, 'commercial': 0, 'residential': 0}
+        count = 0
+        for n in residential_test:
+            # print get_class(n, k, nature_train, commercial_train)
+            out = network.get_output(n)
+            max = -1
+            maxi = 0
+            for j in xrange(3):
+                if max < out[j]:
+                    max = out[j]
+                    maxi = j
+            if (maxi == 0):
+                match = 'nature'
+            if (maxi == 1):
+                match = 'commercial'
+            if (maxi == 2):
+                match = 'residential'
+            if match is None:
+                continue
+            residential_matches[match] += 1
+            count += 1
+        acc = residential_matches['residential']/float(count)
+        accuracy[sift_comp][0]['residential'] = acc
+        accuracy[sift_comp][0]['res_count'] = count
+
+        print "residential: {}\tAccuracy: {}".format(residential_matches, acc)
     pprint.pprint(accuracy)
 
-    with open('knnresult2.csv', 'wb') as csvfile:
+    with open('annresult.csv', 'wb') as csvfile:
         spamwriter = csv.writer(csvfile)
         for sift, sval in accuracy.iteritems():
             for k, kval in sval.iteritems():
