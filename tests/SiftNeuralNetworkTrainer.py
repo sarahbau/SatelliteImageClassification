@@ -4,8 +4,41 @@ import layer.Network as Network
 import random
 import numpy
 
+def norm(val, mean, std):
+    return (val - mean)/std
+
+def normalize_vec(vec, stds, means):
+    for i, v in enumerate(vec):
+        vec[i] = norm(v, means[i], stds[i])
+    return vec
+
+
 data6 = pickle.load(open('../data/image6data_10c.dat', "rb"))['all']
 data1 = pickle.load(open('../data/image1data_10c.dat', "rb"))['all']
+vals = [[]] * len(data6['residential'][0])
+
+for i in xrange(len(data6['residential'][0])):
+    vals[i] = []
+
+for d in data6:
+    for ve in data6[d]:
+        for i, v in enumerate(ve):
+            vals[i].append(v)
+
+stds = []
+means = []
+for v in vals:
+    stds.append(numpy.std(v))
+    means.append(numpy.mean(v))
+
+for d in data6:
+    for i, ve in enumerate(data6[d]):
+        data6[d][i] = normalize_vec(ve, stds, means)
+
+for d in data1:
+    for i, ve in enumerate(data1[d]):
+        data1[d][i] = normalize_vec(ve, stds, means)
+print data1
 
 hidden_layer_count = 15
 l1 = Layer.Layer(10, hidden_layer_count)
