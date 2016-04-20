@@ -11,6 +11,7 @@ import pprint
 import csv
 import layer.Network as Network
 import layer.Layer as Layer
+import random
 
 
 @total_ordering
@@ -112,7 +113,7 @@ if __name__ == '__main__':
         dataM = merge_dicts(data1, data2, data4)
 
         hidden_layer_count = 15
-        l1 = Layer.Layer(10, hidden_layer_count)
+        l1 = Layer.Layer(sift_comp, hidden_layer_count)
         l2 = Layer.Layer(hidden_layer_count, 3)
 
         print ("Initializing weights for layer 1")
@@ -126,8 +127,8 @@ if __name__ == '__main__':
         network.add_layer(l1)
         network.add_layer(l2)
 
-        iterations = 20000
-        learning_rate = 1
+        iterations = 200000
+        learning_rate = .5
 
         for i in xrange(iterations):
             exp = None
@@ -142,8 +143,10 @@ if __name__ == '__main__':
                 exp = [0, 0, 1]
                 class_name = 'residential'
 
-            val = random.choice(dataM[class_name]).tolist()
-            network.back_propagate(val, exp, learning_rate)
+            val = random.choice(dataM[class_name])
+            if val is None or len(val) != sift_comp:
+                continue
+            network.back_propagate(val.tolist(), exp, learning_rate)
 
         nature_test = data6['nature']
         commercial_test = data6['commercial']
@@ -155,7 +158,9 @@ if __name__ == '__main__':
         count = 0
         for n in nature_test:
             # print get_class(n, k, nature_train, commercial_train)
-            out = network.get_output(n)
+            if n is None or len(n) != sift_comp:
+                continue
+            out = network.get_output(n.tolist())
             max = -1
             maxi = 0
             for j in xrange(3):
@@ -174,8 +179,8 @@ if __name__ == '__main__':
             nature_matches[match] += 1
             count += 1
         acc = nature_matches['nature']/float(count)
-        accuracy[sift_comp][k]['nature'] = acc
-        accuracy[sift_comp][k]['nat_count'] = count
+        accuracy[sift_comp][0]['nature'] = acc
+        accuracy[sift_comp][0]['nat_count'] = count
 
         print "Nature: {}\tAccuracy: {}".format(nature_matches, acc)
 
@@ -183,7 +188,9 @@ if __name__ == '__main__':
         count = 0
         for n in commercial_test:
             # print get_class(n, k, nature_train, commercial_train)
-            out = network.get_output(n)
+            if n is None or len(n) != sift_comp:
+                continue
+            out = network.get_output(n.tolist())
             max = -1
             maxi = 0
             for j in xrange(3):
@@ -201,8 +208,8 @@ if __name__ == '__main__':
             commercial_matches[match] += 1
             count += 1
         acc = commercial_matches['commercial']/float(count)
-        accuracy[sift_comp][k]['commercial'] = acc
-        accuracy[sift_comp][k]['com_count'] = count
+        accuracy[sift_comp][0]['commercial'] = acc
+        accuracy[sift_comp][0]['com_count'] = count
 
         print "Commercial: {}\tAccuracy: {}".format(commercial_matches, acc)
 
@@ -210,7 +217,9 @@ if __name__ == '__main__':
         count = 0
         for n in residential_test:
             # print get_class(n, k, nature_train, commercial_train)
-            out = network.get_output(n)
+            if n is None or len(n) != sift_comp:
+                continue
+            out = network.get_output(n.tolist())
             max = -1
             maxi = 0
             for j in xrange(3):

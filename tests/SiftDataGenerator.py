@@ -30,8 +30,8 @@ if __name__ == '__main__':
 
     #image_num = 2
     #n_components = 10
-    for image_num in xrange(2, 7):
-        for n_components in xrange(2, 21):
+    for image_num in xrange(6, 7):
+        for n_components in xrange(128, 129):
             nature_path = '../images/Classified/' + str(image_num) + '/Nature/'
             commercial_path = '../images/Classified/' + str(image_num) + '/Commercial/'
             residential_path = '../images/Classified/' + str(image_num) + '/Residential/'

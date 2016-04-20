@@ -9,6 +9,7 @@ from Queue import PriorityQueue
 import pickle
 import pprint
 import csv
+import copy
 
 
 @total_ordering
@@ -40,26 +41,29 @@ def split_list(a_list):
 
 def get_class(val, k, nature, commercial, residential=None):
     if val == None:
-        # print "Why is this none?"
+        #print "Why is this none?"
         return
     closest = None
     closest_dist = 100
     neighbors = PriorityQueue()
     for n in nature:
-        if n.shape != val.shape:
-            return None
+        #print n
+        if n is None or n.shape != val.shape:
+            continue
         neighbors.put(Neighbor(dist(n, val), 'nature', n))
     for n in commercial:
-        if n.shape != val.shape:
-            return None
+        if n is None or n.shape != val.shape:
+            continue
         neighbors.put(Neighbor(dist(n, val), 'commercial', n))
     for n in residential:
-        if n.shape != val.shape:
-            return None
+        if n is None or n.shape != val.shape:
+            continue
         neighbors.put(Neighbor(dist(n, val), 'residential', n))
 
     matches = {'nature': 0, 'commercial': 0, 'residential': 0}
     for i in xrange(k):
+        if neighbors.empty():
+            break
         neighbor = neighbors.get()
         #print 1/neighbor.dist
         matches[neighbor.t_class] += (1/neighbor.dist)
@@ -69,7 +73,7 @@ def get_class(val, k, nature, commercial, residential=None):
 
 def merge_dicts(x, *dicts):
     '''Given two dicts, merge them into a new dict as a shallow copy.'''
-    z = x.copy()
+    z = copy.deepcopy(x)
     for y in dicts:
         z['residential'].extend(y['residential'])
         z['commercial'].extend(y['commercial'])
@@ -100,34 +104,54 @@ if __name__ == '__main__':
     # residential_test, residential_train = split_list(residential)
 
     accuracy = {}
-    for sift_comp in xrange(2,11):
+    for sift_comp in xrange(128,129):
         print "Starting sift", sift_comp
         accuracy[sift_comp] = {}
-        data6 = pickle.load(open('../data/image6data_' + str(sift_comp) + 'c.dat', "rb"))['all']
         data1 = pickle.load(open('../data/image1data_' + str(sift_comp) + 'c.dat', "rb"))['all']
         data2 = pickle.load(open('../data/image2data_' + str(sift_comp) + 'c.dat', "rb"))['all']
+        data3 = pickle.load(open('../data/image3data_' + str(sift_comp) + 'c.dat', "rb"))['all']
         data4 = pickle.load(open('../data/image4data_' + str(sift_comp) + 'c.dat', "rb"))['all']
-        dataM = merge_dicts(data1, data2, data4)
+        #data5 = pickle.load(open('../data/image5data_' + str(sift_comp) + 'c.dat', "rb"))['all']
+        data6 = pickle.load(open('../data/image6data_' + str(sift_comp) + 'c.dat', "rb"))['all']
+        dataM = merge_dicts(data1, data2, data4, data4)
 
-        nature_train = data6['nature']
-        commercial_train = data6['commercial']
-        residential_train = data6['residential']
-        nature_test = dataM['nature']
-        commercial_test = dataM['commercial']
-        residential_test = dataM['residential']
+        # print "Length of data1: {}".format(len(data1['commercial']) + len(data1['residential']) + len(data1['nature']))
+        # print "Length of data2: {}".format(len(data2['commercial']) + len(data2['residential']) + len(data2['nature']))
+        # print "Length of data4: {}".format(len(data4['commercial']) + len(data4['residential']) + len(data4['nature']))
+        # print "Length of data6: {}".format(len(data6['commercial']) + len(data6['residential']) + len(data6['nature']))
+        # print "Length of dataM: {}".format(len(dataM['commercial']) + len(dataM['residential']) + len(dataM['nature']))
+        #continue
 
-        for k in xrange(1,10):
+        nature_train = dataM['nature']
+        commercial_train = dataM['commercial']
+        residential_train = dataM['residential']
+        nature_test = data6['nature']
+        commercial_test = data6['commercial']
+        residential_test = data6['residential']
+
+        # print "Nature Train: {}".format(len(nature_train))
+        # print "Commercial Train: {}".format(len(commercial_train))
+        # print "Residential Train: {}".format(len(residential_train))
+        # print "Nature Test: {}".format(len(nature_test))
+        # print "Commercial Test: {}".format(len(commercial_test))
+        # print "Residential Test: {}".format(len(residential_test))
+        #continue
+        for k in xrange(1,101):
             print "Starting k =", k
             accuracy[sift_comp][k] = {}
             nature_matches = {'nature': 0, 'commercial': 0, 'residential': 0}
             count = 0
             for n in nature_test:
+                #print "Nature: {}".format(count)
                 # print get_class(n, k, nature_train, commercial_train)
                 match = get_class(n, k, nature_train, commercial_train, residential_train)
                 if match is None:
+                    #print "Is this always none?"
                     continue
                 nature_matches[match] += 1
                 count += 1
+            if count == 0:
+                count = 1
             acc = nature_matches['nature']/float(count)
             accuracy[sift_comp][k]['nature'] = acc
             accuracy[sift_comp][k]['nat_count'] = count
@@ -137,12 +161,15 @@ if __name__ == '__main__':
             commercial_matches = {'nature': 0, 'commercial': 0, 'residential': 0}
             count = 0
             for n in commercial_test:
+                #print "Commercial: {}".format(count)
                 # print get_class(n, k, nature_train, commercial_train)
                 match = get_class(n, k, nature_train, commercial_train, residential_train)
                 if match is None:
                     continue
                 commercial_matches[match] += 1
                 count += 1
+            if count == 0:
+                count = 1
             acc = commercial_matches['commercial']/float(count)
             accuracy[sift_comp][k]['commercial'] = acc
             accuracy[sift_comp][k]['com_count'] = count
@@ -152,12 +179,15 @@ if __name__ == '__main__':
             residential_matches = {'nature': 0, 'commercial': 0, 'residential': 0}
             count = 0
             for n in residential_test:
+                #print "Residential: {}".format(count)
                 # print get_class(n, k, nature_train, commercial_train)
                 match = get_class(n, k, nature_train, commercial_train, residential_train)
                 if match is None:
                     continue
                 residential_matches[match] += 1
                 count += 1
+            if count == 0:
+                count = 1
             acc = residential_matches['residential']/float(count)
             accuracy[sift_comp][k]['residential'] = acc
             accuracy[sift_comp][k]['res_count'] = count
