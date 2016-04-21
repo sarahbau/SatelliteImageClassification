@@ -104,7 +104,7 @@ if __name__ == '__main__':
     # residential_test, residential_train = split_list(residential)
 
     accuracy = {}
-    for sift_comp in xrange(128,129):
+    for sift_comp in xrange(2, 11):
         print "Starting sift", sift_comp
         accuracy[sift_comp] = {}
         data1 = pickle.load(open('../data/image1data_' + str(sift_comp) + 'c.dat', "rb"))['all']
